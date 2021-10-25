@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemCharacter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/defaultPadding">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="@dimen/itemImageSize"
+        android:layout_height="@dimen/itemImageSize"
+        app:shapeAppearanceOverlay="@style/circleImageView"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingStart="@dimen/defaultPadding"
+        android:paddingEnd="@dimen/defaultPadding"
+        android:textSize="@dimen/itemTextSize" />
+
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="defaultPadding">16dp</dimen>
+    <dimen name="itemImageSize">100dp</dimen>
+    <dimen name="itemTextSize">16sp</dimen>
+</resources>
