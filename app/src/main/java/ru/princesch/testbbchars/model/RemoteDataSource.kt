@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RemoteDataSource {
 
     private val charAPI = Retrofit.Builder()
-        .baseUrl("https://www.breakingbadapi.com/api")
+        .baseUrl("https://www.breakingbadapi.com/api/")
         .addConverterFactory(
             GsonConverterFactory.create(GsonBuilder().setLenient().create())
         )

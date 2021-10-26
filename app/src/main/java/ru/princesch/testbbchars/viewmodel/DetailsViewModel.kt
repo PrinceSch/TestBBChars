@@ -9,16 +9,17 @@ import retrofit2.Response
 import ru.princesch.testbbchars.model.Character
 import ru.princesch.testbbchars.model.CharacterDTO
 import ru.princesch.testbbchars.model.RemoteDataSource
+import ru.princesch.testbbchars.model.Repository
 import java.io.IOException
 
-class DetailsViewModel(private val dataSource: RemoteDataSource) : ViewModel() {
+class DetailsViewModel(private val repository: Repository = Repository(RemoteDataSource())) : ViewModel() {
 
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
 
     fun getData(): LiveData<AppState> = liveDataToObserve
     fun getDataFromServer(id: Int,) {
         liveDataToObserve.value = AppState.Loading
-        dataSource.getCharacter(id, detailCallback)
+        repository.getDetainedCharacter(id, detailCallback)
     }
 
     private val detailCallback = object : Callback<CharacterDTO> {

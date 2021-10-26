@@ -9,18 +9,19 @@ import retrofit2.Response
 import ru.princesch.testbbchars.model.Character
 import ru.princesch.testbbchars.model.CharacterDTO
 import ru.princesch.testbbchars.model.RemoteDataSource
+import ru.princesch.testbbchars.model.Repository
 import java.io.IOException
 
 const val SERVER_ERROR = "Ошибка сервера"
 
-class MainViewModel(private val dataSource: RemoteDataSource) : ViewModel() {
+class MainViewModel(private val repository: Repository = Repository(RemoteDataSource())) : ViewModel() {
 
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
 
     fun getData(): LiveData<AppState> = liveDataToObserve
-    private fun getDataFromServer() {
+    fun getDataFromServer() {
         liveDataToObserve.value = AppState.Loading
-        dataSource.getList(mainCallback)
+        repository.getListOfCharacters(mainCallback)
     }
 
     private val mainCallback = object : Callback<List<CharacterDTO>> {

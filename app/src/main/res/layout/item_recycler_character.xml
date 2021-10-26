@@ -9,11 +9,13 @@
     android:padding="@dimen/defaultPadding">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/itemImage"
         android:layout_width="@dimen/itemImageSize"
         android:layout_height="@dimen/itemImageSize"
         app:shapeAppearanceOverlay="@style/circleImageView"/>
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/itemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

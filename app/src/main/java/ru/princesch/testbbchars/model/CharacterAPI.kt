@@ -5,10 +5,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface CharacterAPI {
-    @GET("/characters")
+    @GET("characters")
     fun getCharacters():Call<List<CharacterDTO>>
 
-    @GET("/characters/{id}")
+    @GET("characters/{id}")
     fun getDetail(
         @Path("id") id: Int
     ):Call<CharacterDTO>

@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(binding.container.id, MainFragment.newInstance())
-                .addToBackStack("")
                 .commitNow()
         }
     }
