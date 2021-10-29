@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import ru.princesch.testbbchars.R
 import ru.princesch.testbbchars.databinding.FragmentMainBinding
 import ru.princesch.testbbchars.viewmodel.AppState
+import ru.princesch.testbbchars.viewmodel.DetailsViewModel
 import ru.princesch.testbbchars.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
@@ -25,6 +29,7 @@ class MainFragment : Fragment() {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
     private val adapter = MainFragmentAdapter()
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,23 +37,22 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+
+        navController = NavHostFragment.findNavController(this)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         adapter.setOnItemViewClickListener { character ->
-            activity?.supportFragmentManager?.apply {
-                this.beginTransaction()
-                    .replace(R.id.container, CharacterFragment.newInstance(Bundle().apply {
-                        putParcelable(CharacterFragment.BUNDLE_EXTRA, character)
-                    }))
-                    .addToBackStack("")
-                    .commitAllowingStateLoss()
-            }
+            findNavController().navigate(R.id.actionMainToCharacter, Bundle().apply {
+                putParcelable(CharacterFragment.BUNDLE_EXTRA, character)
+            })
         }
         super.onViewCreated(view, savedInstanceState)
 
         binding.fragmentMainRecyclerView.adapter = adapter
+        navController.currentDestination?.label = getString(R.string.show)
         val observer = Observer<AppState> { appStateData -> renderData(appStateData) }
         viewModel.getData().observe(viewLifecycleOwner, observer)
         viewModel.getDataFromServer()

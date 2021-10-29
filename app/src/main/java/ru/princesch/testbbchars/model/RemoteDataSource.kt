@@ -14,11 +14,11 @@ class RemoteDataSource {
         )
         .build().create(CharacterAPI::class.java)
 
-    fun getList(callback: Callback<List<CharacterDTO>>){
+    fun getList(callback: Callback<List<CharacterDTO>>) {
         charAPI.getCharacters().enqueue(callback)
     }
 
-    fun getCharacter(id: Int, callback: Callback<List<CharacterDTO>>){
+    fun getCharacter(id: Int, callback: Callback<List<CharacterDTO>>) {
         charAPI.getDetail(id).enqueue(callback)
     }
 

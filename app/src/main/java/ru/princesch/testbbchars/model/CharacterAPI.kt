@@ -9,8 +9,8 @@ interface CharacterAPI {
     @GET("characters")
     fun getCharacters():Call<List<CharacterDTO>>
 
-    @GET("characters/{id}")
+    @GET("characters/{char_id}")
     fun getDetail(
-       @Query("id") id: Int
+       @Path("char_id") id: Int
     ):Call<List<CharacterDTO>>
 }
