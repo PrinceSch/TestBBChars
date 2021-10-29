@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         adapter.setOnItemViewClickListener { character ->
-            this.parentFragmentManager.apply {
+            activity?.supportFragmentManager?.apply {
                 this.beginTransaction()
                     .replace(R.id.container, CharacterFragment.newInstance(Bundle().apply {
                         putParcelable(CharacterFragment.BUNDLE_EXTRA, character)
@@ -61,11 +61,12 @@ class MainFragment : Fragment() {
                 adapter.setData(charData)
             }
             is AppState.Loading -> {
-                binding.fragmentMain.showSnakeBar("Loading")
+
             }
 
             else -> {
                 binding.fragmentMain.showSnakeBar("Reload")
+                viewModel.getDataFromServer()
             }
         }
     }

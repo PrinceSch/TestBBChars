@@ -1,6 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/toolbarImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/imageAppBarSize"
+                android:scaleType="center" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_behavior=".view.ViewAppBarBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/defaultPadding">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.1"
+            android:orientation="vertical"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.9"
+            android:orientation="vertical"/>
+
+        <ImageView
+            android:id="@+id/blueRectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nullHeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/spaceOne"
+            app:srcCompat="@drawable/rectangle_blue" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/character"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:text="@string/character"
+            android:layout_margin="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/blueRectangle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/alsoKnown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize"
+            android:text="@string/alsoKnownAs"
+            android:layout_marginTop="@dimen/defaultPadding"
+            app:layout_constraintTop_toBottomOf="@id/character"
+            app:layout_constraintStart_toStartOf="@id/guideLineStart" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/alsoKnownEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/defaultPadding"
+            android:layout_marginStart="@dimen/textMargin"
+            android:textSize="@dimen/textSize"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintStart_toEndOf="@id/alsoKnown"
+            app:layout_constraintTop_toBottomOf="@id/character" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/birthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize"
+            android:text="@string/birthDate"
+            app:layout_constraintTop_toBottomOf="@id/alsoKnown"
+            app:layout_constraintStart_toStartOf="@id/guideLineStart"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/birthDateEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/textMargin"
+            android:textSize="@dimen/textSize"
+            android:text="@string/unknownDate"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintTop_toBottomOf="@id/alsoKnownEdit"
+            app:layout_constraintStart_toEndOf="@id/birthDate" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize"
+            android:text="@string/status"
+            app:layout_constraintStart_toStartOf="@id/guideLineStart"
+            app:layout_constraintTop_toBottomOf="@id/birthDate"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/statusEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/textMargin"
+            android:textSize="@dimen/textSize"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintTop_toBottomOf="@id/birthDateEdit"
+            app:layout_constraintStart_toEndOf="@id/status"/>
+
+        <Space
+            android:id="@+id/spaceOne"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/defaultPadding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status"/>
+
+        <ImageView
+            android:id="@+id/yellowRectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nullHeight"
+            android:layout_marginTop="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/blueRectangle"
+            app:layout_constraintBottom_toBottomOf="@id/spaceTwo"
+            app:srcCompat="@drawable/rectangle_yellow" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:text="@string/work"
+            android:layout_margin="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/yellowRectangle"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/workEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_margin="@dimen/defaultPadding"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@id/guideLineEnd"
+            app:layout_constraintStart_toStartOf="@id/guideLineStart"
+            app:layout_constraintTop_toBottomOf="@id/work"/>
+
+        <Space
+            android:id="@+id/spaceTwo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/defaultPadding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/workEdit"/>
+
+
+        <ImageView
+            android:id="@+id/greenRectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nullHeight"
+            android:layout_marginTop="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/yellowRectangle"
+            app:layout_constraintBottom_toBottomOf="@id/spaceThree"
+            app:srcCompat="@drawable/rectangle_green" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/appearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:text="@string/appearance"
+            android:layout_margin="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/greenRectangle"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/appearanceEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/show"
+            android:visibility="invisible"
+            android:layout_margin="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appearance"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/seasonsEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appearanceEdit"/>
+
+        <Space
+            android:id="@+id/spaceThree"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/defaultPadding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/seasonsEdit"/>
+
+        <ImageView
+            android:id="@+id/purpleRectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nullHeight"
+            android:layout_marginTop="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/greenRectangle"
+            app:layout_constraintBottom_toBottomOf="@id/spaceFour"
+            app:srcCompat="@drawable/rectangle_purple" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/actor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:text="@string/actor"
+            android:layout_margin="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/purpleRectangle"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/actorEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/titleTextSize"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_margin="@dimen/defaultPadding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/actor"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/actorImage"
+            android:layout_width="@dimen/itemImageSize"
+            android:layout_height="@dimen/itemImageSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/actorEdit"
+            app:shapeAppearanceOverlay="@style/circleImageView"/>
+
+        <Space
+            android:id="@+id/spaceFour"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/defaultPadding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/actorImage"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

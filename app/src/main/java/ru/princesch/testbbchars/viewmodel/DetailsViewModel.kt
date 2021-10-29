@@ -12,40 +12,49 @@ import ru.princesch.testbbchars.model.RemoteDataSource
 import ru.princesch.testbbchars.model.Repository
 import java.io.IOException
 
-class DetailsViewModel(private val repository: Repository = Repository(RemoteDataSource())) : ViewModel() {
-
-    private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
+class DetailsViewModel(
+    val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
+    private val repository: Repository = Repository(RemoteDataSource())
+) : ViewModel() {
 
     fun getData(): LiveData<AppState> = liveDataToObserve
-    fun getDataFromServer(id: Int,) {
+    fun getDataFromServer(id: Int) {
         liveDataToObserve.value = AppState.Loading
-        repository.getDetainedCharacter(id, detailCallback)
+        repository.getDetailedCharacter(id, detailCallback)
     }
 
-    private val detailCallback = object : Callback<CharacterDTO> {
+    private val detailCallback = object : Callback<List<CharacterDTO>> {
         @Throws(IOException::class)
         override fun onResponse(
-            call: Call<CharacterDTO>,
-            response: Response<CharacterDTO>
+            call: Call<List<CharacterDTO>>,
+            response: Response<List<CharacterDTO>>
         ) {
-            val serverResponse: CharacterDTO? = response.body()
+            val serverResponse: List<CharacterDTO>? = response.body()
             liveDataToObserve.postValue(
                 (if (response.isSuccessful && serverResponse != null) {
                     AppState.DetailSuccess(convertDtoToModel(serverResponse))
                 } else {
-                    AppState.Error(Throwable(SERVER_ERROR))
+
+                    AppState.Error(Throwable(response.errorBody().toString()))
                 }) as AppState?
             )
         }
 
-        override fun onFailure(call: Call<CharacterDTO>, textError: Throwable) {
+        override fun onFailure(call: Call<List<CharacterDTO>>, textError: Throwable) {
             liveDataToObserve.postValue(AppState.Error(Throwable(textError.message)))
         }
 
-        private fun convertDtoToModel (charDTO: CharacterDTO): Character{
+        private fun convertDtoToModel(charDTO: List<CharacterDTO>): Character {
             return Character(
-                charDTO.char_id, charDTO.name, charDTO.birthday, charDTO.occupation, charDTO.img,
-                charDTO.status, charDTO.appearance, charDTO.nickname, charDTO.portrayed
+                charDTO[0].char_id,
+                charDTO[0].name,
+                charDTO[0].birthday,
+                charDTO[0].occupation,
+                charDTO[0].img,
+                charDTO[0].status,
+                charDTO[0].appearance,
+                charDTO[0].nickname,
+                charDTO[0].portrayed
             )
         }
     }

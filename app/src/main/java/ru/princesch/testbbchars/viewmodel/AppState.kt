@@ -1,6 +1,7 @@
 package ru.princesch.testbbchars.viewmodel
 
 import ru.princesch.testbbchars.model.Character
+import ru.princesch.testbbchars.model.CharacterDTO
 
 sealed class AppState {
     data class CharactersSuccess(val charactersData: List<Character>) : AppState()

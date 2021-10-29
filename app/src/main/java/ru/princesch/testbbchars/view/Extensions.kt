@@ -24,3 +24,5 @@ fun View.hide(): View{
     }
     return this
 }
+
+const val SERVER_ERROR = "Ошибка сервера"

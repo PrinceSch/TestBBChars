@@ -3,4 +3,9 @@
     <dimen name="defaultPadding">16dp</dimen>
     <dimen name="itemImageSize">100dp</dimen>
     <dimen name="itemTextSize">16sp</dimen>
+    <dimen name="imageAppBarSize">400dp</dimen>
+    <dimen name="titleTextSize">16sp</dimen>
+    <dimen name="textSize">14sp</dimen>
+    <dimen name="textMargin">10dp</dimen>
+    <dimen name="nullHeight">0dp</dimen>
 </resources>

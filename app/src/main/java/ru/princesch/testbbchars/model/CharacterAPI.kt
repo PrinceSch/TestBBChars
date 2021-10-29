@@ -3,6 +3,7 @@ package ru.princesch.testbbchars.model
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CharacterAPI {
     @GET("characters")
@@ -10,6 +11,6 @@ interface CharacterAPI {
 
     @GET("characters/{id}")
     fun getDetail(
-        @Path("id") id: Int
-    ):Call<CharacterDTO>
+       @Query("id") id: Int
+    ):Call<List<CharacterDTO>>
 }

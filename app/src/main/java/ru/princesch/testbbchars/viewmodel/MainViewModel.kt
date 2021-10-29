@@ -10,9 +10,8 @@ import ru.princesch.testbbchars.model.Character
 import ru.princesch.testbbchars.model.CharacterDTO
 import ru.princesch.testbbchars.model.RemoteDataSource
 import ru.princesch.testbbchars.model.Repository
+import ru.princesch.testbbchars.view.SERVER_ERROR
 import java.io.IOException
-
-const val SERVER_ERROR = "Ошибка сервера"
 
 class MainViewModel(private val repository: Repository = Repository(RemoteDataSource())) : ViewModel() {
 

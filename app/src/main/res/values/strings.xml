@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">BB Characters</string>
+    <string name="character">Персонаж</string>
+    <string name="alsoKnownAs">Также известен как:</string>
+    <string name="birthDate">Дата рождения:</string>
+    <string name="status">Статус:</string>
+    <string name="work">Род деятельности</string>
+    <string name="appearance">Появление</string>
+    <string name="actor">Актер</string>
+    <string name="show">Breaking Bad</string>
+    <string name="unknownDate">-</string>
 </resources>

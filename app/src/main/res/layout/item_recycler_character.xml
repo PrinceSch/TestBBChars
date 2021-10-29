@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_bold"
         android:paddingStart="@dimen/defaultPadding"
         android:paddingEnd="@dimen/defaultPadding"
         android:textSize="@dimen/itemTextSize" />

@@ -8,7 +8,7 @@ class Repository(private val remoteDataSource: RemoteDataSource) {
         remoteDataSource.getList(callback)
     }
 
-    fun getDetainedCharacter(id: Int, callback: Callback<CharacterDTO>){
+    fun getDetailedCharacter(id: Int, callback: Callback<List<CharacterDTO>>){
         remoteDataSource.getCharacter(id, callback)
     }
 

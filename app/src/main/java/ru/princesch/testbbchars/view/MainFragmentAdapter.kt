@@ -1,5 +1,6 @@
 package ru.princesch.testbbchars.view
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -39,14 +40,14 @@ class MainFragmentAdapter : RecyclerView.Adapter<MainFragmentAdapter.MainViewHol
         notifyDataSetChanged()
     }
 
-    inner class MainViewHolder(val binding: ItemRecyclerCharacterBinding) :
+    inner class MainViewHolder(private val binding: ItemRecyclerCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(character: Character) {
             with(binding) {
                 Picasso.get()
                     .load(character.img)
                     .fit()
-                    .centerCrop()
+                    .centerCrop(Gravity.TOP)
                     .into(itemImage)
                 itemName.text = character.name
 

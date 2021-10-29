@@ -18,7 +18,7 @@ class RemoteDataSource {
         charAPI.getCharacters().enqueue(callback)
     }
 
-    fun getCharacter(id: Int, callback: Callback<CharacterDTO>){
+    fun getCharacter(id: Int, callback: Callback<List<CharacterDTO>>){
         charAPI.getDetail(id).enqueue(callback)
     }
 
