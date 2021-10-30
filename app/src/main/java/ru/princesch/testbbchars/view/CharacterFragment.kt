@@ -48,7 +48,6 @@ class CharacterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         characterBundle = arguments?.getParcelable(BUNDLE_EXTRA) ?: Character()
         binding.toolbar.title = characterBundle.name
-        //TODO не изменяется цвет заголовка тулбара
         viewModel.getData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getDataFromServer(characterBundle.char_id)
 
@@ -87,18 +86,19 @@ class CharacterFragment : Fragment() {
                 Picasso
                     .get()
                     .load(img)
+                    .placeholder(R.drawable.loading_animation)
                     .fit()
                     .centerCrop(Gravity.TOP)
                     .into(toolbarImage)
                 Picasso
                     .get()
                     .load(img)
+                    .placeholder(R.drawable.loading_animation)
                     .fit()
                     .centerCrop(Gravity.TOP)
                     .into(actorImage)
                 alsoKnownEdit.text = nickname
                 if (birthday != "Unknown") {
-//                    birthDateEdit.text = birthday
                     birthDateEdit.text = convertDate(birthday)
                 }
                 statusEdit.text = character.status

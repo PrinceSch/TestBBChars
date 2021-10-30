@@ -13,11 +13,20 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/roboto</item>
+        <item name="titleTextColor">@color/white</item>
     </style>
 
     <style name="circleImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+    
+    <style name="myCollapsedTitle" parent="@style/TextAppearance.AppCompat.Medium.Inverse">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="myExpandedTitle" parent="@style/TextAppearance.AppCompat.Large.Inverse">
+        <item name="android:textSize">36sp</item>
     </style>
 
 </resources>

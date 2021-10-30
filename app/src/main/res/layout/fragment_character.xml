@@ -13,9 +13,10 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collToolbar"
             android:layout_width="match_parent"
-            android:background="@color/appBar"
-            app:contentScrim="@color/appBar"
             android:layout_height="wrap_content"
+            app:collapsedTitleTextAppearance="@style/myCollapsedTitle"
+            app:contentScrim="@color/appBar"
+            app:expandedTitleTextAppearance="@style/myExpandedTitle"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -25,13 +26,12 @@
                 android:scaleType="center" />
 
             <androidx.appcompat.widget.Toolbar
-                app:subtitleTextColor="@color/white"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
-                app:titleTextColor="@color/white"
-                app:layout_collapseMode="pin"/>
+                app:collapseIcon="@drawable/ic_back"
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

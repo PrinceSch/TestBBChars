@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import ru.princesch.testbbchars.R
 import ru.princesch.testbbchars.databinding.ItemRecyclerCharacterBinding
 import ru.princesch.testbbchars.model.Character
 import ru.princesch.testbbchars.model.CharacterDTO
@@ -46,6 +47,7 @@ class MainFragmentAdapter : RecyclerView.Adapter<MainFragmentAdapter.MainViewHol
             with(binding) {
                 Picasso.get()
                     .load(character.img)
+                    .placeholder(R.drawable.loading_animation)
                     .fit()
                     .centerCrop(Gravity.TOP)
                     .into(itemImage)
