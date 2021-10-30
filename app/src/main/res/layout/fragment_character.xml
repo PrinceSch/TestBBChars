@@ -14,7 +14,8 @@
             android:id="@+id/collToolbar"
             android:layout_width="match_parent"
             android:background="@color/appBar"
-            android:layout_height="@dimen/imageAppBarSize"
+            app:contentScrim="@color/appBar"
+            android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -24,6 +25,7 @@
                 android:scaleType="center" />
 
             <androidx.appcompat.widget.Toolbar
+                app:subtitleTextColor="@color/white"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
